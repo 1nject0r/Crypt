@@ -1,5 +1,6 @@
 import Caesar
 
+
 def encrypt(pwd, msg):
     enc_msg = ''
     for letter in range(len(msg)):
@@ -12,6 +13,13 @@ def decrypt(pwd, msg):
     for letter in range(len(msg)):
         dec_msg += Caesar.decrypt(ord(pwd[letter % len(pwd)].lower()) - ord('a')+1, msg[letter])
     return dec_msg
+
+
+def brute(password_list, msg):
+    output = []
+    for password in password_list:
+        output.append(decrypt(password,msg))
+    return output
 
 
 def main():

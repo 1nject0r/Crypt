@@ -23,10 +23,10 @@ def decrypt(shift, msg):
 
 
 def crack(msg):
-    cracked_msg = ''
+    cracked = []
     for letter in range(ord('z')-ord('a')+1):
-        cracked_msg += encrypt(letter,msg) + '\n'
-    return cracked_msg
+        cracked.append(encrypt(letter,msg))
+    return cracked
 
 
 def full_encrypt(shift, msg):
@@ -44,10 +44,10 @@ def full_decrypt(shift, msg):
 
 
 def full_crack(msg):
-    cracked_msg = ''
+    output = []
     for character in range(128):
-        cracked_msg += full_encrypt(character,msg) + '\n'
-    return cracked_msg
+        output.append(full_encrypt(character,msg))
+    return output
 
 
 def main():
@@ -55,11 +55,13 @@ def main():
     msg = str(raw_input('Enter your Message:\n'))
     enc_msg = encrypt(shift, msg)
     dec_msg = decrypt(shift, enc_msg)
-    cracked_msg = crack(msg)
+    cracked = crack(msg)
 
     print 'Your encrypted message is:\n' + enc_msg + '\n\n'
     print 'Your decrypted message is:\n' + dec_msg + '\n\n'
-    print 'All possibilities:\n' + cracked_msg + '\n\n'
+    print 'All possibilities:'
+    for msg in cracked:
+        print msg
 
 
 if __name__ == '__main__':
