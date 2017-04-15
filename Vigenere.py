@@ -3,14 +3,14 @@ import Caesar
 def encrypt(pwd, msg):
     enc_msg = ''
     for letter in range(len(msg)):
-        enc_msg += Caesar.encrypt(ord(pwd[letter % len(pwd)].lower()) - ord('a'), msg[letter])
+        enc_msg += Caesar.encrypt(ord(pwd[letter % len(pwd)].lower()) - ord('a')+1, msg[letter])
     return enc_msg
 
 
 def decrypt(pwd, msg):
     dec_msg = ''
     for letter in range(len(msg)):
-        dec_msg += Caesar.decrypt(ord(pwd[letter % len(pwd)].lower()) - ord('a'), msg[letter])
+        dec_msg += Caesar.decrypt(ord(pwd[letter % len(pwd)].lower()) - ord('a')+1, msg[letter])
     return dec_msg
 
 
