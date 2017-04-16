@@ -50,6 +50,30 @@ def full_crack(msg):
     return output
 
 
+def live_encrypt(shift):
+    enc_msg = ''
+    print 'Enter message to encrypt:'
+    while True:
+        msg = str(raw_input())
+        if msg == 'exit()': break
+        out = encrypt(shift, msg)
+        enc_msg += out
+        print out
+    return enc_msg
+
+
+def live_decrypt(shift):
+    dec_msg = ''
+    print 'Enter message to decrypt:'
+    while True:
+        msg = str(raw_input())
+        if msg == 'exit()': break
+        out = decrypt(shift, msg)
+        dec_msg += out
+        print out
+    return dec_msg
+
+
 def main():
     shift = int(raw_input('Enter shift factor:\n'))
     msg = str(raw_input('Enter your Message:\n'))
@@ -66,3 +90,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    #print live_encrypt(3)
+    #print live_decrypt(3)

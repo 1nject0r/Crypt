@@ -22,6 +22,38 @@ def brute(password_list, msg):
     return output
 
 
+def live_encrypt(pw):
+    enc_msg = ''
+    print 'Enter message to encrypt:'
+    i = 0
+    while True:
+        msg = str(raw_input())
+        if msg == 'exit()': break
+        msg_out = ''
+        for j in range(len(msg)):
+            msg_out += Caesar.encrypt(ord(pw[i%len(pw)].lower())-ord('a')+1, msg[j])
+            i += 1
+        enc_msg += msg_out
+        print msg_out
+    return enc_msg
+
+
+def live_decrypt(pw):
+    dec_msg = ''
+    print 'Enter message to decrypt:'
+    i = 0
+    while True:
+        msg = str(raw_input())
+        if msg == 'exit()': break
+        msg_out = ''
+        for j in range(len(msg)):
+            msg_out += Caesar.decrypt(ord(pw[i%len(pw)].lower())-ord('a')+1, msg[j])
+            i += 1
+        dec_msg += msg_out
+        print msg_out
+    return dec_msg
+
+
 def main():
     pwd = str(raw_input('Enter your password:\n'))
     msg = str(raw_input('Enter your message:\n'))
@@ -39,3 +71,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    #live_encrypt('abc')
+    #live_decrypt('abc')
